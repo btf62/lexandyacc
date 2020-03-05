@@ -42,8 +42,7 @@ from |
 behind |
 above |
 below |
-between |
-below		{ printf("%s: is a preposition\n", yytext); }
+between		{ printf("%s: is a preposition\n", yytext); }
 
 if |
 then |
@@ -63,7 +62,7 @@ you |
 he |
 she |
 we |
-they		{ printf("%s: in a pronoun\n", yytext); }
+they		{ printf("%s: is a pronoun\n", yytext); }
 
 
 [a-zA-Z]+ {
@@ -74,7 +73,7 @@ they		{ printf("%s: in a pronoun\n", yytext); }
 
 %%
 
-main()
+int main()
 {
 	yylex();
 }

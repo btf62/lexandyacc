@@ -18,6 +18,7 @@ int state;
 
 int add_word(int type, char *word);
 int lookup_word(char *word);
+void dump_list();
 %}
 %%
 \n	{ state = LOOKUP; }	/* end of line, return to default state */
@@ -29,6 +30,7 @@ int lookup_word(char *word);
 ^prep	{ state = PREP; }
 ^pron	{ state = PRON; }
 ^conj	{ state = CONJ; }
+^dump	{ dump_list(); }
 
 [a-zA-Z]+  {
 		/* a normal word, define it or look it up */
@@ -54,7 +56,7 @@ int lookup_word(char *word);
 .	/* ignore anything else */ ;
 
 %%
-main()
+int main()
 {
 	yylex();
 }
@@ -107,4 +109,20 @@ lookup_word(char *word)
 	}
 
 	return LOOKUP;	/* not found */
+}
+
+void
+dump_list()
+{
+	struct word *wp = word_list;
+	int count = 0;
+
+	printf("<<dumping word list>>\n");
+
+	for (; wp; wp = wp->next) {
+		count++;
+		printf("Word:%s | Type:%d\n", wp->word_name, wp->word_type);
+	}
+
+	printf("Total words: %d\n", count);
 }
