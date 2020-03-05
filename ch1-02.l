@@ -35,7 +35,7 @@ go		{ printf("%s: is a verb\n", yytext); }
 .|\n		{ ECHO; /* normal default anyway */ }
 %%
 
-main()
+int main()
 {
 	yylex();
 }
