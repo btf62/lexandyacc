@@ -3,7 +3,7 @@
 # make and run all the example programs for
 # lex & yacc, Second Edition
 CC = gcc -g
-LIBS = -ly -ll
+LIBS = -ll -ly
 LEX = flex
 YACC = yacc
 CFLAGS = -DYYDEBUG=1
