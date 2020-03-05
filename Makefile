@@ -21,6 +21,9 @@ PROGRAMSE = ape-05.pgm ape-06.pgm
 all:	${PROGRAMS1} ${PROGRAMS2} ${PROGRAMS3} ${PROGRAMS4} ${PROGRAMS5} \
 	${PROGRAMSE}
 
+clean:
+	rm -rf ch*.c *.o *.pgm *.dSYM
+
 progs.tar:
 	tar cvf $@ \
 	Makefile ape-05.l ape-06.l ch1-01.l ch1-02.l ch1-03.l ch1-04.l \
