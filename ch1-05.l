@@ -8,6 +8,8 @@
 #define LOOKUP 0 /* default - not a defined word type. */
 
 int state; 
+int add_word(int type, char *word);
+int lookup_word(char *word);
 
 %}
 
@@ -67,8 +69,7 @@ struct word *word_list; /* first element in word list */
 
 extern void *malloc();
 
-int
-add_word(int type, char *word)
+int add_word(int type, char *word)
 {
 	struct word *wp;	
 
@@ -92,8 +93,7 @@ add_word(int type, char *word)
 	return 1;	/* it worked */
 }
 
-int
-lookup_word(char *word)
+int lookup_word(char *word)
 {
 	struct word *wp = word_list;
 
